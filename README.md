@@ -69,6 +69,11 @@ node_modules
 3. Run the command ```ls -a``` and make sure that the ```.git``` repository (hidden) is deleted inside the ```/client``` repository
 4. Navigate back to the root repository
 
+## MongoDB Cloud Atlas Account and Configuration Setup
+
+* Follow instructions from MongoDB's [Official Atlas Documentaion](https://docs.mongodb.com/manual/tutorial/atlas-free-tier-setup/) and get hold of the connection URI string
+* Replace your localhost MongoDB URI with Atlas URI that you just obtained in ```/config/database.js```
+
 ## Heroku Setup
 
 1. First create a Heroku Account
