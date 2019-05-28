@@ -2,6 +2,11 @@
 
 ## Repository Structure Setup
 
+* If you're creating a new project, create a folder with <appname>
+* Navigate inside the folder and run ```npm init```. This will create ```package.json``` where you'll setup your dependencies and configurations
+* Restructure your Node, React repositories in the following manner. ```client``` folder is your ```create-react-app``` or any React.js app. 
+
+
 ```
 your-app
 │   README.md   
@@ -71,7 +76,7 @@ node_modules
 
 ## MongoDB Cloud Atlas Account and Configuration Setup
 
-* Follow instructions from MongoDB's [Official Atlas Documentaion](https://docs.mongodb.com/manual/tutorial/atlas-free-tier-setup/) and get hold of the connection URI string
+* Follow instructions from MongoDB's [Official Atlas Documentation](https://docs.mongodb.com/manual/tutorial/atlas-free-tier-setup/) and get hold of the connection URI string
 * Replace your localhost MongoDB URI with Atlas URI that you just obtained in ```/config/database.js```
 
 ## Heroku Setup
@@ -110,7 +115,7 @@ Open ```package.json``` in the server folder and add the following configuration
     "start": "node index.js", "heroku-postbuild": "cd client && npm install && npm run build" 
 }, 
 "engines": {
-    "node": "10.3.0", 
+    "node": "^10.3.0", 
     "npm": "^6.8.0" 
 }
 ```
@@ -119,20 +124,21 @@ Open ```package.json``` in the server folder and add the following configuration
 1. Go back to the client folder of your application from command prompt and type following: ```npm run build``` (under client folder)
 2. Whenever we make changes in the code, we run ```npm run build``` in the root directory 
 
-
 ## Deploy
 
 1. Go to App/server from cmd and type following: ```heroku login``` 
 
-2. Go back to server folder
-- ```run heroku create <appname>```
-- ```git remote (to check heroku source)```
+2. If you're configurating git for the first time, run the command ```git init```
 
-3. Run these commands everytime you make changes to your code
+3. Go back to server folder
+- Run ```heroku create <appname>```
+- ```git remote -v``` (to check heroku source)
+
+4. Run these commands everytime you make changes to your code
 - ```git add .```
 - ```git commit -m "Initial Commit"```
 - ```git push heroku master```
 
-4. Your app will be now deployed and and URL will be provided by Heroku
+5. Your app will be now deployed and and URL will be provided by Heroku
 
 **Note: Check axios.js for base URL, make sure to ignore node_modules in the .gitignore file**
