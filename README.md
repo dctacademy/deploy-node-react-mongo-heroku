@@ -79,3 +79,60 @@ node_modules
 1. First create a Heroku Account
 2. Read Heroku's documentation thoroughly. Check it out [here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up)
 3. Setup Heroku CLI as instructed in the above link
+
+## PORT and Path Configuration
+
+1. Open ```index.js``` in the server and change the port configuration as follows:
+
+```javascript
+const port = process.env.PORT || 3000; 
+```
+2. In the same file, require 'path': 
+```javascript 
+const path = require('path') 
+```
+3. In the same folder under ```index.js``` add the below middleware methods before ```app.listen()```
+```javascript
+app.use(express.static(path.join(__dirname,"client/build"))) 
+app.get("*",(req,res) => { 
+    res.sendFile(path.join(__dirname + "/client/build/index.html")) 
+}) 
+```
+
+4. Open ```axios.js``` (front end) from ```client/src/config``` folder and change the base URL to ```/``` for deployment. Otherwise it will point to localhost.
+
+## package.json setup
+
+Open ```package.json``` in the server folder and add the following configuration to the existing ones
+
+```javascript
+"scripts": {
+    "start": "node index.js", "heroku-postbuild": "cd client && npm install && npm run build" 
+}, 
+"engines": {
+    "node": "10.3.0", 
+    "npm": "^6.8.0" 
+}
+```
+## Build
+
+1. Go back to the client folder of your application from command prompt and type following: ```npm run build``` (under client folder)
+2. Whenever we make changes in the code, we run ```npm run build``` in the root directory 
+
+
+## Deploy
+
+1. Go to App/server from cmd and type following: ```heroku login``` 
+
+2. Go back to server folder
+- ```run heroku create <appname>```
+- ```git remote (to check heroku source)```
+
+3. Run these commands everytime you make changes to your code
+- ```git add .```
+- ```git commit -m "Initial Commit"```
+- ```git push heroku master```
+
+4. Your app will be now deployed and and URL will be provided by Heroku
+
+**Note: Check axios.js for base URL, make sure to ignore node_modules in the .gitignore file**
