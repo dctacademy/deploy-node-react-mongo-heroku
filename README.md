@@ -1,4 +1,4 @@
-# Step to deploy a MERN (MongoDB, Express.js, React.js, Node.js) Application to Heroku
+# Steps to deploy a MERN (MongoDB, Express.js, React.js, Node.js) Application to Heroku
 
 ## Repository Structure Setup
 
@@ -135,7 +135,7 @@ Open ```package.json``` in the server folder and add the following configuration
 
 3. Go back to server folder
 - Run ```heroku create <appname>```
-- ```git remote -v``` (to check heroku source)
+- ```git remote -v``` (to check heroku remote)
 
 4. Run these commands everytime you make changes to your code
 - ```git add .```
