@@ -112,7 +112,10 @@ Open ```package.json``` in the server folder and add the following configuration
 
 ```javascript
 "scripts": {
-    "start": "node index.js", "heroku-postbuild": "cd client && npm install && npm run build" 
+    "start": "node index.js",
+    "install": "cd client && npm run build",
+    "heroku-prebuild": "npm install",
+    "heroku-postbuild": "cd client && npm install && npm run build"
 }, 
 "engines": {
     "node": "^10.3.0", 
